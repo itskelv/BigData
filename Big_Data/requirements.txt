@@ -1,8 +1,0 @@
-pyspark
-torch
-transformers
-scikit-learn
-numpy
-sentencepiece
-accelerate
-pandas
