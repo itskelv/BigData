@@ -21,15 +21,15 @@ def main():
     df_train = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
-        .csv("./Big_Data/dataset/train.csv")
+        .csv("../MARC_dataset/train.csv")
     df_test = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
-        .csv("./Big_Data/dataset/test.csv")
+        .csv("../MARC_dataset/test.csv")
     df_val = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
-        .csv("./Big_Data/dataset/validation.csv")
+        .csv("../MARC_dataset/validation.csv")
     # adjust star label fortransformer model
     df_train = df_train.withColumn("label", col("stars") - 1)
     df_val = df_val.withColumn("label", col("stars") - 1)
