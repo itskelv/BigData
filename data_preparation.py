@@ -34,6 +34,8 @@ def main():
         .option("inferSchema", "true") \
         .csv(params['val_root_dir'])
     
+    print(df_train.columns)
+    
     print("Language distribution:")
     df_train.groupBy("language").count().show()
 
