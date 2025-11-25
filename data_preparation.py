@@ -24,14 +24,23 @@ def main():
     df_train = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
+        .option("multiLine", True) \
+        .option("escape", "\"") \
+        .option("quote", "\"") \
         .csv(params['train_root_dir'])
     df_test = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
+        .option("multiLine", True) \
+        .option("escape", "\"") \
+        .option("quote", "\"") \
         .csv(params['test_root_dir'])
     df_val = spark.read \
         .option("header", "true") \
         .option("inferSchema", "true") \
+        .option("multiLine", True) \
+        .option("escape", "\"") \
+        .option("quote", "\"") \
         .csv(params['val_root_dir'])
     
     print(df_train.columns)
