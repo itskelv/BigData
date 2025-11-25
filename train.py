@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 import os
 import parameters
+import SAmodel
 
 params = parameters.params
 
@@ -56,10 +57,7 @@ LANG = {
 }
 
 # Load XLMR model
-model = XLMRobertaForSequenceClassification.from_pretrained(
-    'xlm-roberta-base', 
-    num_labels=5
-)
+model = SAmodel.SAmodel
 # utilizing cuda
 print("Using device:", model.device)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
