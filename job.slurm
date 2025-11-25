@@ -9,4 +9,4 @@
 
 module load cuda/12.1
 conda activate bigdataenv
-python main.py
+python train.py
