@@ -33,10 +33,6 @@ def main():
         .option("header", "true") \
         .option("inferSchema", "true") \
         .csv(params['val_root_dir'])
-    # adjust star label fortransformer model
-    df_train = df_train.withColumn("label", col("stars") - 1)
-    df_val = df_val.withColumn("label", col("stars") - 1)
-    df_test = df_test.withColumn("label", col("stars") - 1)
     
     print("Language distribution:")
     df_train.groupBy("language").count().show()
@@ -99,6 +95,11 @@ def main():
                             .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
     df_test = df_test.dropna(subset=["label", "review_body", "language"]) \
                                 .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
+    
+    # adjust star label for transformer model
+    df_train = df_train.withColumn("label", col("stars") - 1)
+    df_val = df_val.withColumn("label", col("stars") - 1)
+    df_test = df_test.withColumn("label", col("stars") - 1)
     
     # show cleaned text diffrence
     # df_train.select("review_body", "clean_text", "stars").show(5, truncate=100)
