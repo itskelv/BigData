@@ -35,6 +35,8 @@ def main():
         .csv(params['val_root_dir'])
     
     print(df_train.columns)
+
+    df_train.printSchema()
     
     print("Language distribution:")
     df_train.groupBy("language").count().show()
