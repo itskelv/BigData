@@ -92,6 +92,11 @@ def main():
     df_train = data_cleaning(df_train)
     df_val = data_cleaning(df_val)  
     df_test = data_cleaning(df_test)
+
+    # adjust star label for transformer model
+    df_train = df_train.withColumn("label", col("stars") - 1)
+    df_val = df_val.withColumn("label", col("stars") - 1)
+    df_test = df_test.withColumn("label", col("stars") - 1)
     # remove irrelevant features
     df_train = df_train.dropna(subset=["label", "review_body", "language"]) \
                                 .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
@@ -99,11 +104,6 @@ def main():
                             .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
     df_test = df_test.dropna(subset=["label", "review_body", "language"]) \
                                 .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
-    
-    # adjust star label for transformer model
-    df_train = df_train.withColumn("label", col("stars") - 1)
-    df_val = df_val.withColumn("label", col("stars") - 1)
-    df_test = df_test.withColumn("label", col("stars") - 1)
     
     # show cleaned text diffrence
     # df_train.select("review_body", "clean_text", "stars").show(5, truncate=100)
