@@ -9,9 +9,9 @@ import parameters
 params = parameters.params
 
 # Import finalized dataset
-train_pd = pd.read_pickle(os.path.join(params["three_class_dir"], "train.pkl"))
-val_pd   = pd.read_pickle(os.path.join(params["three_class_dir"], "val.pkl"))
-test_pd = pd.read_pickle(os.path.join(params["three_class_dir"], "test.pkl"))
+train_pd = pd.read_pickle(os.path.join(params["final_dir"], "train.pkl"))
+val_pd   = pd.read_pickle(os.path.join(params["final_dir"], "val.pkl"))
+test_pd = pd.read_pickle(os.path.join(params["final_dir"], "test.pkl"))
 
 print("training samples:", len(train_pd))
 print("validation samples:", len(val_pd))

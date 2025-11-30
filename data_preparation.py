@@ -139,11 +139,11 @@ def main():
 
     print(f"Training samples: {len(train_pd)}")
     print(f"Validation samples: {len(val_pd)}")
-    print(f"Validation samples: {len(test_pd)}")
+    print(f"Test samples: {len(test_pd)}")
 
-    train_pd.to_pickle(os.path.join(params["three_class_dir"], "train.pkl"))
-    val_pd.to_pickle(os.path.join(params["three_class_dir"], "val.pkl"))
-    test_pd.to_pickle(os.path.join(params["three_class_dir"], "test.pkl"))
+    train_pd.to_pickle(os.path.join(params["final_dir"], "train.pkl"))
+    val_pd.to_pickle(os.path.join(params["final_dir"], "val.pkl"))
+    test_pd.to_pickle(os.path.join(params["final_dir"], "test.pkl"))
     
 if __name__ == "__main__":
     main()
