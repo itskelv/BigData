@@ -9,9 +9,9 @@ import parameters
 params = parameters.params
 
 # Import finalized dataset
-train_pd = pd.read_pickle(os.path.join(params["final_dir"], "train.pkl"))
-val_pd   = pd.read_pickle(os.path.join(params["final_dir"], "val.pkl"))
-test_pd = pd.read_pickle(os.path.join(params["final_dir"], "test.pkl"))
+train_pd = pd.read_pickle(os.path.join(params["three_class_dir"], "train.pkl"))
+val_pd   = pd.read_pickle(os.path.join(params["three_class_dir"], "val.pkl"))
+test_pd = pd.read_pickle(os.path.join(params["three_class_dir"], "test.pkl"))
 
 print("training samples:", len(train_pd))
 print("validation samples:", len(val_pd))
@@ -95,7 +95,7 @@ def compute_metrics(p):
 # Creating training arguments
 training_args = TrainingArguments(
     output_dir='./xlmr-sentiment-quick',
-    num_train_epochs=10,
+    num_train_epochs=5,
     per_device_train_batch_size=32,
     per_device_eval_batch_size=32,
     warmup_steps=100,

@@ -103,9 +103,24 @@ def main():
     df_test = data_cleaning(df_test)
 
     # adjust star label for transformer model
-    df_train = df_train.withColumn("label", col("stars") - 1)
-    df_val = df_val.withColumn("label", col("stars") - 1)
-    df_test = df_test.withColumn("label", col("stars") - 1)
+    df_train = df_train.withColumn("label", 
+    when(col("stars") == 1, 0)
+    .when(col("stars") == 2, 0)
+    .when(col("stars") == 3, 1)
+    .when(col("stars") == 4, 2)
+    .when(col("stars") == 5, 2))
+    df_val = df_val.withColumn("label", 
+    when(col("stars") == 1, 0)
+    .when(col("stars") == 2, 0)
+    .when(col("stars") == 3, 1)
+    .when(col("stars") == 4, 2)
+    .when(col("stars") == 5, 2))
+    df_test = df_test.withColumn("label", 
+    when(col("stars") == 1, 0)
+    .when(col("stars") == 2, 0)
+    .when(col("stars") == 3, 1)
+    .when(col("stars") == 4, 2)
+    .when(col("stars") == 5, 2))
     # remove irrelevant features
     df_train = df_train.dropna(subset=["label", "review_body", "language"]) \
                                 .drop("stars", "review_id", "product_id", "reviewer_id", "product_category", "_c0")
@@ -126,9 +141,9 @@ def main():
     print(f"Validation samples: {len(val_pd)}")
     print(f"Validation samples: {len(test_pd)}")
 
-    train_pd.to_pickle(os.path.join(params["final_dir"], "train.pkl"))
-    val_pd.to_pickle(os.path.join(params["final_dir"], "val.pkl"))
-    test_pd.to_pickle(os.path.join(params["final_dir"], "test.pkl"))
+    train_pd.to_pickle(os.path.join(params["three_class_dir"], "train.pkl"))
+    val_pd.to_pickle(os.path.join(params["three_class_dir"], "val.pkl"))
+    test_pd.to_pickle(os.path.join(params["three_class_dir"], "test.pkl"))
     
 if __name__ == "__main__":
     main()
