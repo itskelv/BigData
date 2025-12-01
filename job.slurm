@@ -9,4 +9,5 @@
 
 module load cuda/12.1
 conda activate bigdataenv
-python train.py
+python train_xlmRoBERTa.py
+python train_xlmRemBERT.py
