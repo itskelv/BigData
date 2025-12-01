@@ -94,7 +94,7 @@ def compute_metrics(p):
     }
 # Creating training arguments
 training_args = TrainingArguments(
-    output_dir='./xlmr-sentiment-quick',
+    output_dir='./ori-sentiment-quick',
     num_train_epochs=10,
     per_device_train_batch_size=32,
     per_device_eval_batch_size=32,
@@ -122,5 +122,5 @@ trainer = Trainer(
 print("training...")
 trainer.train()
 # Save the model
-trainer.save_model('./xlmr-sentiment-final')
+trainer.save_model('./ori-sentiment-final')
 print("Model saved!")
