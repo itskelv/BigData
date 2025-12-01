@@ -94,7 +94,7 @@ def compute_metrics(p):
     }
 # Creating training arguments
 training_args = TrainingArguments(
-    output_dir='./xlmr-sentiment-quick',
+    output_dir='./rbrt-sentiment-quick',
     num_train_epochs=10,
     per_device_train_batch_size=32,
     per_device_eval_batch_size=32,
