@@ -95,9 +95,9 @@ def compute_metrics(p):
 # Creating training arguments
 training_args = TrainingArguments(
     output_dir='./rbrt-sentiment-quick',
-    num_train_epochs=10,
-    per_device_train_batch_size=32,
-    per_device_eval_batch_size=32,
+    num_train_epochs=5,
+    per_device_train_batch_size=64,
+    per_device_eval_batch_size=64,
     warmup_steps=100,
     weight_decay=0.01,
     logging_steps=50,
@@ -108,6 +108,7 @@ training_args = TrainingArguments(
     remove_unused_columns=False,
     load_best_model_at_end=True,
     metric_for_best_model="eval_loss",
+    fp16=True
 )
 # Creating training session
 trainer = Trainer(
@@ -122,5 +123,5 @@ trainer = Trainer(
 print("training...")
 trainer.train()
 # Save the model
-trainer.save_model('./rbrt-sentiment-final')
+trainer.save_model('./rbrt-sentiment-final-model')
 print("Model saved!")
