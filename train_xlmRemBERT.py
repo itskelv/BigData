@@ -24,7 +24,7 @@ def tokenize_function(texts):
         texts,
         padding="max_length",
         truncation=True,
-        max_length=512,
+        max_length=128,
         return_tensors="pt"
     )
 print("Tokenizing training data...")
