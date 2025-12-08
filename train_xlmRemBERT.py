@@ -96,8 +96,8 @@ def compute_metrics(p):
 training_args = TrainingArguments(
     output_dir='./rbrt-sentiment-quick',
     num_train_epochs=5,
-    per_device_train_batch_size=64,
-    per_device_eval_batch_size=64,
+    per_device_train_batch_size=32,
+    per_device_eval_batch_size=32,
     warmup_steps=100,
     weight_decay=0.01,
     logging_steps=50,
